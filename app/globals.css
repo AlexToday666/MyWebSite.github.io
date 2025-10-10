@@ -27,8 +27,8 @@
   --accent-purple: 285 92% 72%;
   --card: 258 25% 10%;
   --border: 0 0% 100% / 0.08;
-  /* Display font variable for headings */
-  --ff-exotica: 'SPRITE GRAFFITI', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Keep using Next local font variable in dark mode too */
+  --ff-exotica: var(--font-sprite), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 html:focus-within { scroll-behavior: smooth; }

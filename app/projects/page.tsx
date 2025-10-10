@@ -55,7 +55,7 @@ export default function ProjectsPage() {
             </div>
             <div className="p-3">
               <h3 className="text-lg font-semibold">{p.title}</h3>
-              <p className="mt-1 text-sm text-muted">{p.description}</p>
+              <p className="mt-1 text-sm text-muted font-readable">{p.description}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {p.stack.map((s) => (
                   <span key={s} className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-muted font-mono">
