@@ -12,9 +12,9 @@
   --accent-purple: 285 92% 72%;
   --card: 258 25% 10%;
   --border: 0 0% 100% / 0.08;
-  /* Use Sprite Graffiti for all site text */
-  --ff-exotica: 'SPRITE GRAFFITI', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --ff-ouroboros: 'SPRITE GRAFFITI', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Use Next local font var so basePath works on Pages */
+  --ff-exotica: var(--font-sprite), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ff-ouroboros: var(--font-sprite), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 .dark {
@@ -141,32 +141,7 @@ body { overflow-y: visible; }
 #projects-page h1::before { content: "проекты"; color: hsl(var(--fg)); display: inline-block; }
 
 
-/* Local font-face for EXOTICA (drop files into public/fonts) */
-@font-face {
-  font-family: 'EXOTICA';
-  src: url('/fonts/exotica.woff2') format('woff2'),
-       url('/fonts/exotica.woff') format('woff');
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
-/* Optional local font for OUROBOROS. Put files into public/fonts */
-@font-face {
-  font-family: 'OUROBOROS';
-  src: url('/fonts/ouroboros.woff2') format('woff2'),
-       url('/fonts/ouroboros.woff') format('woff');
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
-/* Local font-face for SPRITE GRAFFITI (use your provided OTF) */
-@font-face {
-  font-family: 'SPRITE GRAFFITI';
-  src: url('/fonts/SpriteGraffiti-Regular.otf') format('opentype');
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* Local fonts are loaded via next/font/local in layout; no manual @font-face needed */
 
 /* Heading label fixes: absolute centered pseudo text */
 #stack h2::before { content: "стэк" !important; position: absolute; left: 50%; transform: translateX(-50%); }

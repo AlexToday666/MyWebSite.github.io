@@ -8,11 +8,13 @@ type BrandIconProps = {
 };
 
 export default function BrandIcon({ src, color, size = 48, className }: BrandIconProps) {
+  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const url = `${prefix}${src}`;
   const style: React.CSSProperties = {
     width: size,
     height: size,
-    WebkitMaskImage: `url(${src})`,
-    maskImage: `url(${src})`,
+    WebkitMaskImage: `url(${url})`,
+    maskImage: `url(${url})`,
     WebkitMaskRepeat: "no-repeat",
     maskRepeat: "no-repeat",
     WebkitMaskSize: "contain",
