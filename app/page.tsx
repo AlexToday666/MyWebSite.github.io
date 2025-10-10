@@ -29,7 +29,7 @@ export default function HomePage() {
           </div>
 
           <motion.h1
-            className="relative z-10 text-6xl sm:text-8xl font-extrabold tracking-tight [font-family:var(--ff-exotica)]"
+            className="relative z-10 text-7xl sm:text-9xl font-extrabold tracking-tight [font-family:var(--ff-exotica)]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25 }}
