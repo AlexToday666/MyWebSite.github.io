@@ -44,7 +44,7 @@ jobs:
             echo "value=/$repo_name" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Build and export static site
+      - name: Build static site
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
         run: npm run build:pages
@@ -52,14 +52,14 @@ jobs:
       - name: Ensure .nojekyll and CNAME
         shell: bash
         run: |
-          mkdir -p docs
-          : > docs/.nojekyll
-          if [[ -f CNAME ]]; then cp CNAME docs/CNAME; fi
+          mkdir -p out
+          : > out/.nojekyll
+          if [[ -f CNAME ]]; then cp CNAME out/CNAME; fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: out
 
   deploy:
     needs: build
@@ -71,4 +71,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
