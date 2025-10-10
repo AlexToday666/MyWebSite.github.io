@@ -16,7 +16,7 @@
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:pages": "next build && next export -o docs"
+    "build:pages": "next build"
   },
   "dependencies": {
     "clsx": "^2.1.1",
