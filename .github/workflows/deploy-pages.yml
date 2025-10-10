@@ -47,6 +47,9 @@ jobs:
       - name: Build static site for Pages
         run: npm run build:pages
 
+      - name: Add .nojekyll (serve _next)
+        run: echo "" > ./out/.nojekyll
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
