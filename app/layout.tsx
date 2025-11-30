@@ -7,11 +7,11 @@ import localFont from "next/font/local";
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
 const manrope = Manrope({ subsets: ["latin", "cyrillic"], variable: "--font-manrope", weight: ["200","300","400","500","600","700","800"] });
 const bebas = Unbounded({ subsets: ["latin", "cyrillic"], weight: ["400","600","800"], variable: "--font-bebas" });
-const sprite = localFont({
+const gendy = localFont({
   src: [
-    { path: "../public/fonts/SpriteGraffiti-Regular.otf", weight: "400", style: "normal" },
+    { path: "../public/fonts/Gendy.otf", weight: "400", style: "normal" },
   ],
-  variable: "--font-sprite",
+  variable: "--font-gendy",
   display: "swap",
 });
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className={`${sprite.className} ${sprite.variable}`}>
+      <body className={`${gendy.className} ${gendy.variable}`}>
         <a href="#content" className="skip-link">Сразу к контенту</a>
         <Providers>{children}</Providers>
       </body>

@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FolderOpen } from "lucide-react";
 
 function useScrollDirection() {
   const [dir, setDir] = useState<"down" | "up">("down");
@@ -27,25 +26,25 @@ export default function NeonProjectGrid() {
     {
       title: "Visual Curcuit Designer",
       text:
-        "Веб-сервис, предоставляющий оптимизированную платформу для проектирования, компиляции и отладки цифровых схем непосредственно в браузере.",
+        "Веб-сервис, предоставляющий оптимизированную платформу для проектирования, компиляции и отладки цифровых схем.",
       href: "https://github.com/AlexToday666/Visual-Circuit-Designer",
     },
     {
-      title: "Торговая система",
+      title: "Trading System",
       text:
-        "Реализация стратегии дивергенций цены и RSI: живой сканер и торговля через MetaTrader 5, бэктест на Backtrader, HTML-отчёты QuantStats, утилиты для выгрузки данных и списка инструментов",
+        "Реализация стратегии дивергенций цены и RSI: живой сканер и торговля через MetaTrader 5, бэктест на Backtrader, HTML-отчёты QuantStats.",
       href: "https://github.com/AlexToday666/MT5-Divergence-Bot",
     },
     {
       title: "Rating My Spot",
       text:
-        "REST API сервис для поиска лучших мест работы (кафе, коворкинги, библиотеки) с фильтрацией по уровню шума, скорости Wi‑Fi и количеству розеток",
+        "REST API сервис для поиска лучших мест работы (кафе, коворкинги, библиотеки) с фильтрацией по уровню шума, скорости Wi‑Fi.",
       href: "https://github.com/AlexToday666/RMS",
     },
     {
       title: "Notes API",
       text:
-        "это простой REST-сервис для хранения заметок с тегами, поддержкой поиска и архивирования.",
+        "REST-сервис для хранения заметок с тегами, поддержкой поиска и архивирования.",
       href: "https://github.com/AlexToday666/Notes-API",
     },
   ];
@@ -64,7 +63,7 @@ export default function NeonProjectGrid() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
       {cards.map(({ title, text, href }) => {
         const violet = "#A78BFA";
         const border = hexToRgba(violet, 0.55);
@@ -80,26 +79,20 @@ export default function NeonProjectGrid() {
             variants={variants}
           >
             <div
-              className="relative h-40 rounded-2xl border bg-card/90 p-4 pr-12 text-left shadow-sm flex flex-col"
+              className="relative h-60 rounded-2xl border bg-card/95 p-6 text-center shadow-sm flex flex-col items-center justify-center"
               style={{ borderColor: border, boxShadow: `0 0 0 1px ${border} inset, 0 0 30px ${glow}` }}
             >
-              {/* Per-card folder icon button */}
               <Link
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Open project on GitHub"
-                className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/5 text-violet-400 transition-colors duration-200 hover:bg-violet-500 hover:text-black"
+                className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-lg text-white/90 font-semibold transition-all duration-200 hover:bg-violet-500 hover:text-black hover:scale-105 hover:ring-2 hover:ring-violet-500/60 hover:ring-offset-2 hover:ring-offset-[hsl(var(--bg))]"
               >
-                <FolderOpen className="h-4 w-4" strokeWidth={2.2} aria-hidden />
-              </Link>
-              <span className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/90 font-semibold">
                 {title}
-              </span>
-              <p className="mt-2 text-sm text-white/70 font-readable clamp-2">
+              </Link>
+              <p className="mt-4 text-lg text-white/70 font-readable clamp-2 text-center">
                 {text}
               </p>
-              <span className="mt-auto text-xs text-white/40">&nbsp;</span>
             </div>
             <span
               aria-hidden

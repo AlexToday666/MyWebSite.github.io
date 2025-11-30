@@ -64,12 +64,11 @@ export default function StackSection() {
   return (
     <section id="stack" className="container py-14 sm:py-16">
       <div className="mb-6 text-center reveal">
-        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight [font-family:var(--ff-exotica)]">Стэк</h2>
-        <p className="mt-2 text-sm text-white/70 max-w-2xl mx-auto">Основные технологии и инструменты, с которыми я работаю.</p>
+        <h2 className="text-[2.5rem] sm:text-[3.75rem] font-extrabold tracking-tight [font-family:var(--ff-exotica)]">Стэк</h2>
       </div>
 
       {/* Primary icons */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 reveal-grid">
+      <div className="flex flex-wrap justify-center gap-6 reveal-grid">
         {PRIMARY.map((p) => {
           const rim = rimFor(p.name);
           const border = hexToRgba(rim, 0.55);
@@ -77,20 +76,20 @@ export default function StackSection() {
           return (
             <div key={p.name} className="group relative rounded-2xl transition-transform duration-300 hover:scale-[1.02]">
               <div
-                className="rounded-2xl border bg-card/90 p-5 text-center shadow-sm"
+                className="rounded-2xl border bg-card/95 p-8 text-center shadow-sm min-w-[140px]"
                 style={{ borderColor: border, boxShadow: `0 0 0 1px ${border} inset, 0 0 30px ${glow}` }}
               >
-                <div className="mx-auto grid h-14 w-14 place-items-center">
+                <div className="mx-auto grid h-20 w-20 place-items-center">
                   <Image
                     src={withBasePath(p.src)}
                     alt={p.name}
-                    width={56}
-                    height={56}
+                    width={80}
+                    height={80}
                     className="transition-transform duration-200 group-hover:scale-110"
                     draggable={false}
                   />
                 </div>
-                <div className="mt-3 text-sm text-white/80">{p.name}</div>
+                <div className="mt-4 text-base font-medium text-white/80">{p.name}</div>
               </div>
               <span
                 aria-hidden
@@ -103,7 +102,7 @@ export default function StackSection() {
       </div>
 
       {/* Secondary brand tiles */}
-      <div className="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-4 reveal-grid">
+      <div className="mt-6 flex flex-wrap justify-center gap-5 reveal-grid">
         {SECONDARY.map((p) => {
           const rim = rimFor(p.name);
           const border = hexToRgba(rim, 0.55);
@@ -111,21 +110,21 @@ export default function StackSection() {
           return (
             <div key={p.name} className="group relative rounded-2xl transition-transform duration-300 hover:scale-[1.02]">
               <div
-                className="rounded-2xl border bg-card/90 p-4 text-center shadow-sm"
+                className="rounded-2xl border bg-card/95 p-6 text-center shadow-sm min-w-[120px]"
                 style={{ borderColor: border, boxShadow: `0 0 0 1px ${border} inset, 0 0 26px ${glow}` }}
               >
-                <div className="mx-auto grid h-10 w-10 place-items-center">
+                <div className="mx-auto grid h-16 w-16 place-items-center">
                   <Image
                     src={withBasePath(p.src)}
                     alt={p.name}
-                    width={40}
-                    height={40}
+                    width={64}
+                    height={64}
                     className="transition-transform duration-200 group-hover:scale-110"
                     style={p.name === 'Kafka' ? { filter: 'brightness(0) saturate(100%) invert(69%) sepia(36%) saturate(726%) hue-rotate(208deg) brightness(102%) contrast(103%)' } : undefined}
                     draggable={false}
                   />
                 </div>
-                <div className="mt-2 text-xs text-white/75">{p.name}</div>
+                <div className="mt-3 text-sm text-white/75">{p.name}</div>
               </div>
               <span
                 aria-hidden
@@ -138,26 +137,26 @@ export default function StackSection() {
       </div>
 
       {/* Владение языками */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="mt-8 flex flex-col md:flex-row gap-8 justify-center items-stretch max-w-4xl mx-auto">
         {/* Languages card: dark rim style */}
-        <div className="group relative rounded-3xl h-full transition-transform duration-300 hover:scale-[1.02]">
+        <div className="group relative rounded-3xl h-full transition-transform duration-300 hover:scale-[1.02] flex-1 max-w-xs">
           <div
-            className="rounded-3xl border bg-card/90 p-5 md:p-6 shadow-sm h-full"
+            className="rounded-3xl border bg-card/95 p-6 md:p-8 shadow-sm h-full"
             style={{
               borderColor: hexToRgba('#A78BFA', 0.55),
               boxShadow: `0 0 0 1px ${hexToRgba('#A78BFA', 0.55)} inset, 0 0 36px ${hexToRgba('#A78BFA', 0.25)}`,
             }}
           >
-            <h3 className="text-sm font-semibold text-white/80">Владение языками</h3>
-            <div className="mt-3">
+            <h3 className="text-base font-semibold text-white/80">Владение языками</h3>
+            <div className="mt-4">
               {profile.languages.slice(0, 3).map((l) => (
-                <div key={l.name} className="mt-2 first:mt-0">
-                  <div className="flex items-center justify-between text-xs">
+                <div key={l.name} className="mt-3 first:mt-0">
+                  <div className="flex items-center justify-between text-sm">
                     <span className="text-white/80">{l.name}</span>
                     <span className="text-white/60">{l.level}</span>
                   </div>
-                  <div className="mt-1 h-2 w-full rounded-full bg-white/10">
-                    <div className="h-2 rounded-full bg-[hsl(var(--accent-purple))]" style={{ width: `${l.value}%` }} />
+                  <div className="mt-2 h-2.5 w-full rounded-full bg-white/10">
+                    <div className="h-2.5 rounded-full bg-[hsl(var(--accent-purple))]" style={{ width: `${l.value}%` }} />
                   </div>
                 </div>
               ))}
@@ -172,27 +171,27 @@ export default function StackSection() {
         </div>
 
         {/* Processes card: dark rim style */}
-        <div className="group relative rounded-3xl h-full transition-transform duration-300 hover:scale-[1.02]">
+        <div className="group relative rounded-3xl h-full transition-transform duration-300 hover:scale-[1.02] flex-1 max-w-xs">
           <div
-            className="rounded-3xl border bg-card/90 p-5 md:p-6 shadow-sm h-full"
+            className="rounded-3xl border bg-card/95 p-6 md:p-8 shadow-sm h-full"
             style={{
               borderColor: hexToRgba('#A78BFA', 0.55),
               boxShadow: `0 0 0 1px ${hexToRgba('#A78BFA', 0.55)} inset, 0 0 36px ${hexToRgba('#A78BFA', 0.25)}`,
             }}
           >
-            <h3 className="text-sm font-semibold text-white/80">Владение процессами</h3>
-            <p className="mt-1.5 text-xs text-white/70">Командные методологии и планирование</p>
-            <div className="mt-5 mb-2 min-h-16 flex flex-wrap gap-3 justify-center items-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm sm:text-base text-white/80">
-                <RefreshCw className="h-5 w-5 text-[hsl(var(--accent-purple))]" aria-hidden />
+            <h3 className="text-base font-semibold text-white/80">Владение процессами</h3>
+            <p className="mt-2 text-sm text-white/70">Командные методологии и планирование</p>
+            <div className="mt-6 mb-2 min-h-20 flex flex-wrap gap-4 justify-center items-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-base sm:text-lg text-white/80">
+                <RefreshCw className="h-6 w-6 text-[hsl(var(--accent-purple))]" aria-hidden />
                 Scrum
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm sm:text-base text-white/80">
-                <Workflow className="h-5 w-5 text-[hsl(var(--accent-purple))]" aria-hidden />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-base sm:text-lg text-white/80">
+                <Workflow className="h-6 w-6 text-[hsl(var(--accent-purple))]" aria-hidden />
                 Agile
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm sm:text-base text-white/80">
-                <KanbanSquare className="h-5 w-5 text-[hsl(var(--accent-purple))]" aria-hidden />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-base sm:text-lg text-white/80">
+                <KanbanSquare className="h-6 w-6 text-[hsl(var(--accent-purple))]" aria-hidden />
                 Kanban
               </span>
             </div>

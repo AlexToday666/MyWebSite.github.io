@@ -9,12 +9,12 @@
   --muted: 220 12% 70%;
   --accent-green: 268 90% 66%; /* primary violet (repurposed var) */
   --accent-blue: 260 100% 75%; /* softer purple-blue for accents */
-  --accent-purple: 285 92% 72%;
+  --accent-purple: 270 100% 65%;
   --card: 258 25% 10%;
   --border: 0 0% 100% / 0.08;
   /* Use Next local font var so basePath works on Pages */
-  --ff-exotica: var(--font-sprite), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --ff-ouroboros: var(--font-sprite), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ff-exotica: var(--font-gendy), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ff-ouroboros: var(--font-gendy), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 .dark {
@@ -24,16 +24,31 @@
   --muted: 220 12% 70%;
   --accent-green: 268 90% 66%;
   --accent-blue: 260 100% 75%;
-  --accent-purple: 285 92% 72%;
+  --accent-purple: 270 100% 65%;
   --card: 258 25% 10%;
   --border: 0 0% 100% / 0.08;
   /* Keep using Next local font variable in dark mode too */
-  --ff-exotica: var(--font-sprite), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ff-exotica: var(--font-gendy), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 html:focus-within { scroll-behavior: smooth; }
 
 body { @apply bg-[hsl(var(--bg))] text-[hsl(var(--fg))] antialiased; font-family: var(--ff-exotica); }
+
+/* Prevent text selection and blue highlight */
+h1, h2, h3 {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+}
+
+/* Prevent blue outline on click */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
 
 /* Disable horizontal scroll */
 html, body { overflow-x: hidden; }
@@ -42,6 +57,24 @@ html, body { overflow-x: hidden; }
 html, body { height: 100%; }
 html { overflow-y: auto; }
 body { overflow-y: visible; }
+
+/* Hide scrollbar but keep functionality */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Hide scrollbar on main element */
+#content {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+#content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
 /* Accessible focus ring */
 :where(a, button, input, select, textarea) {
@@ -132,18 +165,55 @@ body { overflow-y: visible; }
 
 /* Replace headings text visually without touching markup */
 #stack h2 { color: transparent !important; position: relative; text-align: center; text-wrap: balance; }
-#stack h2::before { content: "стэк"; color: hsl(var(--fg)); display: inline-block; }
+#stack h2::before { content: "Technical Stack"; color: hsl(var(--fg)); display: inline-block; }
 
 #projects h2 { color: transparent !important; position: relative; text-align: center; }
-#projects h2::before { content: "проекты"; color: hsl(var(--fg)); display: inline-block; }
+#projects h2::before { content: "Projects"; color: hsl(var(--fg)); display: inline-block; }
 
 #projects-page h1 { color: transparent !important; position: relative; text-align: center; }
-#projects-page h1::before { content: "проекты"; color: hsl(var(--fg)); display: inline-block; }
+#projects-page h1::before { content: "Projects"; color: hsl(var(--fg)); display: inline-block; }
 
 
 /* Local fonts are loaded via next/font/local in layout; no manual @font-face needed */
 
 /* Heading label fixes: absolute centered pseudo text */
-#stack h2::before { content: "стэк" !important; position: absolute; left: 50%; transform: translateX(-50%); }
-#projects h2::before { content: "проекты" !important; position: absolute; left: 50%; transform: translateX(-50%); }
-#projects-page h1::before { content: "проекты" !important; position: absolute; left: 50%; transform: translateX(-50%); }
+#stack h2::before { content: "Technical Stack" !important; position: absolute; left: 50%; transform: translateX(-50%); }
+#projects h2::before { content: "Projects" !important; position: absolute; left: 50%; transform: translateX(-50%); }
+#projects-page h1::before { content: "Projects" !important; position: absolute; left: 50%; transform: translateX(-50%); }
+
+/* Dynamic glow animation for FinalCallout */
+@keyframes glow-pulse {
+  0%, 100% { 
+    opacity: 0.4;
+    box-shadow: 0 0 20px rgba(167,139,250,0.4), 0 0 40px rgba(167,139,250,0.3), 0 0 60px rgba(167,139,250,0.2);
+  }
+  50% { 
+    opacity: 0.8;
+    box-shadow: 0 0 30px rgba(167,139,250,0.7), 0 0 60px rgba(167,139,250,0.5), 0 0 90px rgba(167,139,250,0.3);
+  }
+}
+
+/* GPU acceleration for performance */
+.animate-orb-1,
+.animate-orb-2,
+.animate-soft-blink {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.final-callout-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: rgba(167,139,250,0.4);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+}
