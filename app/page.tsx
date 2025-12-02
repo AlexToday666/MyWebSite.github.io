@@ -194,12 +194,15 @@ export default function HomePage() {
       </section>
 
       {/* Раздел 3: Заключение */}
-      <section id="final" className="relative min-h-[110svh] grid place-items-center">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute left-[-12%] top-[15%] h-[100rem] w-[100rem] rounded-full bg-gradient-to-tr from-violet-500/35 to-fuchsia-500/25 blur-3xl animate-soft-blink" />
-          <div className="absolute right-[-14%] bottom-[-10%] h-[100rem] w-[100rem] rounded-full bg-gradient-to-bl from-fuchsia-500/30 to-purple-500/25 blur-3xl animate-soft-blink" />
-        </div>
+      <section id="final" className="relative min-h-[100svh] grid place-items-center overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-[-10%] top-[15%] h-[85rem] w-[85rem] rounded-full bg-gradient-to-tr from-violet-500/35 to-fuchsia-500/25 blur-3xl animate-soft-blink" />
+        <div
+          className="absolute right-[-10%] bottom-[-15%] h-[85rem] w-[85rem] rounded-full bg-gradient-to-bl from-fuchsia-500/30 to-purple-500/25 blur-3xl animate-soft-blink"
+        />
+      </div>
 
+        
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
